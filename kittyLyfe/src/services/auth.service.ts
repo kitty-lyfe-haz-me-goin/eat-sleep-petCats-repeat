@@ -3,6 +3,7 @@ import { AngularFireAuth } from "angularfire2/auth";
 import * as firebase from 'firebase/app';
 import { Router } from "@angular/router";
 import { Observable } from "rxjs/Observable";
+import { MatDialog, MatDialogConfig } from "@angular/material";
 import 'rxjs/add/operator/map'
 
 @Injectable()
@@ -14,7 +15,7 @@ export class AuthService {
   public _currentUsersUid: string;
   public _currentUsersDisplayName: String;
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) {
+  constructor(private afAuth: AngularFireAuth, private router: Router, private dialog: MatDialog, ) {
     this.afAuth.authState.subscribe((user: firebase.User) => {
       if (user) {
         console.log("user is singed in as ", user);
@@ -45,6 +46,8 @@ export class AuthService {
   get currentUsersDisplayName(): String {
     return this._currentUsersDisplayName;
   }
+
+
 
   createWithEmailAndPassword(email, password): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -135,3 +138,4 @@ export class AuthService {
   }
 
 }
+

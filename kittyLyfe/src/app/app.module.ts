@@ -47,6 +47,7 @@ import { PostComponent } from './post/post.component';
 import { UploadPictureComponent } from './upload-picture/upload-picture.component';
 import { PostService } from '../services/post.service';
 import { AuthGuard } from '../services/auth.guard';
+import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
 
 export const MaterialModules = [
   MatAutocompleteModule,
@@ -90,11 +91,9 @@ export const MaterialModules = [
     FlexLayoutModule,
     AngularFireDatabaseModule
   ],
-  entryComponents: [
-    UploadPictureComponent,
-  ],
-  declarations: [ AppComponent, HomeComponent, SigninComponent, PostComponent, UploadPictureComponent ],
+  declarations: [ AppComponent, HomeComponent, SigninComponent, PostComponent, CreateRestaurantComponent ],
   providers: [AuthService, PostService, AngularFireDatabase, AuthGuard],
+  entryComponents:[UploadPictureComponent, CreateRestaurantComponent],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

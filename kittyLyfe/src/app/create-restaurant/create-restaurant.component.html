@@ -1,0 +1,39 @@
+<div id="main" fxLayout="column">
+  
+  <h1 mat-dialog-title fxLayoutAlign="center center">Create a new restaurant</h1>
+
+  <mat-dialog-content>
+      <ol>
+        <li>
+          <mat-form-field fxFlex>
+            <input matInput name="name" [(ngModel)]="name" placeholder="Resturant's Name">
+          </mat-form-field>
+        </li>
+
+        <li>
+          <mat-form-field fxFlex>
+            <input matInput name="email" [(ngModel)]="email" placeholder="Resturant's Email" type="email">
+          </mat-form-field>
+        </li>
+        
+        <li>
+          <mat-form-field fxFlex>
+            <input matInput name="address" [(ngModel)]="address" placeholder="Resturant's Address">
+          </mat-form-field>
+        </li>
+
+        <li>
+        <mat-form-field fxFlex>
+            <input matInput name="phone" [(ngModel)]="phone" placeholder="Resturant's Phone Number" type="tel">
+          </mat-form-field>
+      </li>
+    </ol>
+    
+    </mat-dialog-content>
+
+    <mat-dialog-actions fxLayoutAlign="end center">
+      <button md-button type="button" mat-raised-button (click)="close()">Cancel</button>
+      <button md-button mat-raised-button mat-primary (click)="submit()">Submit</button>
+    </mat-dialog-actions>
+
+</div>
