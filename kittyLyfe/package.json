@@ -22,7 +22,7 @@
     "@angular/material": "^6.2.1",
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
-    "@angular/router": "^6.0.3",
+    "@angular/router": "^6.0.5",
     "angularfire2": "^5.0.0-rc.10",
     "core-js": "^2.5.4",
     "firebase": "^5.0.4",

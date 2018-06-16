@@ -7,6 +7,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app-routing.module';
 
 import {
   MatAutocompleteModule,
@@ -34,6 +35,7 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 
 export const MaterialModules = [
   MatAutocompleteModule,
@@ -72,10 +74,9 @@ export const MaterialModules = [
     BrowserAnimationsModule,
     MaterialModules,
     FormsModule,
-
-    
+    AppRoutingModule,
   ],
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent, HomeComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}
