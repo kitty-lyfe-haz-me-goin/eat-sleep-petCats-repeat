@@ -9,7 +9,7 @@
       </span>
     </mat-card-title>
     <button mat-button id="google-button" (click)="authService.signInWithGoogle()"></button>
-    <button mat-raised-button id="createAcc">Create Account</button>
+    <button mat-raised-button id="createAcc" (click)="displayAcountCreation()">Create Account</button>
   </mat-card>
 
   <ng-template #signedInTemplate>

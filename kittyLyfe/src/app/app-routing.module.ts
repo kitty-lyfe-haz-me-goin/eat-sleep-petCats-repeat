@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: HomeComponent },
+  { path: '', pathMatch: 'full', component: SigninComponent },
   { path: 'signin', pathMatch: 'full', component: SigninComponent }
 ];
 

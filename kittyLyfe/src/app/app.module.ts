@@ -41,6 +41,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { PostComponent } from './post/post.component';
+import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
 
 export const MaterialModules = [
   MatAutocompleteModule,
@@ -83,8 +84,9 @@ export const MaterialModules = [
     AppRoutingModule,
     FlexLayoutModule
   ],
-  declarations: [ AppComponent, HomeComponent, SigninComponent, PostComponent ],
+  declarations: [ AppComponent, HomeComponent, SigninComponent, PostComponent, CreateRestaurantComponent ],
   providers: [AuthService],
+  entryComponents:[CreateRestaurantComponent],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}
