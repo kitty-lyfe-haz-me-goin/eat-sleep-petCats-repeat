@@ -25,7 +25,7 @@
     <span fxShow="false" *ngIf="authService.isSignedInStream | async" fxShow.gt-xs class="signedInBtn">{{authService.displayNameStream | async}}, you are AWESOME!</span>
   </mat-toolbar>
 
-  <div id="temp" fxLayoutAlign="center center">
+  <div id="temp" fxLayoutAlign="space-around center">
     <div class="container" class.gt-xs="container-extra-padding" fxFlex fxFlex.mat="600px" fxFlex.gt-mat="600px">
       <router-outlet></router-outlet>
     </div>
