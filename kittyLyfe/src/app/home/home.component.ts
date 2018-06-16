@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-// import { Post } from '../models/post.model';
+// import { Post, Photo } from '../models/post.model';
+import { AuthService } from '../../services/auth.service';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { Router } from '@angular/router';
+import { PostService } from '../../services/post.service';
+import { Post, Photo } from '../models/post.model';
+import { UploadPictureComponent } from '../upload-picture/upload-picture.component';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +14,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  post: String;
 
-  ngOnInit() {
+  photo: Photo;
+
+  isExpanded = false;
+
+  constructor(private authService: AuthService,
+    private dialog: MatDialog,
+    private router: Router,
+    public postService: PostService) {
+  }
+
+  ngOnInit(){
+  }
+
+  onSubmit() {
+    let p = new Post({
+      author: this.authService._currentUsersDisplayName,
+      post: this.post,
+      time: (new Date()).getTime().toString(),
+      userId: this.authService._currentUsersUid,
+      likes: [],
+      comments: [],
+      photo: this.photo,
+    });
+    this.postService.addPost(p);
+    this.post = '';
+  }
+
+  showPhotoDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    let diaLogRef = this.dialog.open(UploadPictureComponent);
+    diaLogRef.afterClosed().subscribe((result: Photo) => {
+      this.photo = result;
+      this.post = result.caption;
+    });
   }
 
 }

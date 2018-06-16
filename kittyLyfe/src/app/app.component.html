@@ -7,6 +7,12 @@
       <a mat-list-item (click)="sidenav.toggle()">
         Home
       </a>
+
+      <hr>
+
+      <a mat-list-item (click)="sidenav.toggle(); authService.signOut();">
+        Sign out
+      </a>
     </mat-nav-list>
   </mat-sidenav>
 

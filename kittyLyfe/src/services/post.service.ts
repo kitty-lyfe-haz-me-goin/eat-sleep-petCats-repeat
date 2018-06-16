@@ -7,8 +7,9 @@ import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/Observable/combineLatest';
 import 'rxjs/add/operator/switchMap';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import 'rxjs/add/operator/scan';
+import { Query } from '@firebase/database';
 
 @Injectable()
 export class PostService {
@@ -19,19 +20,19 @@ export class PostService {
   readonly postBatchSize = 20;
 
   public author: String;
-  allStream: Observable<Post[]>
+  allStream: Observable<{}[]>
   public isMypostsPageStream: Subject<String>;
   private postIncrementStream: Subject<number>;
   
 
-  constructor(private authService: AuthService, public db: AngularFireDatabase) {
+  constructor(private authService: AuthService, private db: AngularFireDatabase) {
     this.postIncrementStream = new BehaviorSubject<number>(this.postBatchSize);
     this.isMypostsPageStream = new BehaviorSubject<String>('');
 
-    const numPostsStream = this.postIncrementStream.
-      scan<number>((previousTotal: number, currentValue: number) => {
-        return previousTotal + currentValue;
-      });
+    // const numPostsStream = this.postIncrementStream.
+    //   scan<number>((previousTotal: number, currentValue: number) => {
+    //     return previousTotal + currentValue;
+    //   });
 
     // const queryStream: Observable<Query> = Observable.combineLatest<Query>(
     //   numPostsStream,
@@ -57,13 +58,15 @@ export class PostService {
     //   });
 
 
-    // this.allStream = Observable.combineLatest<Post[]>(
-    //   postsStream,
-    //   numPostsStream,
-    //   (posts: Post[], numPostsRequested: number) => {
-    //     this.hideLoadMoreBtn = numPostsRequested > posts.length;
-    //     return posts;
-    //   });
+    //   this.allStream = Observable.combineLatest<Post[]>(
+    //     postsStream,
+    //     numPostsStream,
+    //     (posts: Post[], numPostsRequested: number) => {
+    //       this.hideLoadMoreBtn = numPostsRequested > posts.length;
+    //       return posts;
+    //     });
+    this.allStream = this.db.list(this.postsPath).valueChanges();
+
   }
 
   displayMorePosts() {
@@ -126,7 +129,7 @@ export class PostService {
 
   update(key: string, post: Post) {
     // firebase.database().ref().child(this.postsPath).child(key).set(post);
-    this.db.object(`/${this.postsPath}/${key}`).update(post);
+    // this.db.object(`/${this.postsPath}/${key}`).update(post);
   }
 
   removePicture(postKey: string) {

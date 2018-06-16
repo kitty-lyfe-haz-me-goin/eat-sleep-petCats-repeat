@@ -10,6 +10,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from '../services/auth.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpModule } from '@angular/http';
+import { AngularFireDatabase } from 'angularfire2/database-deprecated';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import {
   MatAutocompleteModule,
@@ -41,6 +44,9 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { PostComponent } from './post/post.component';
+import { UploadPictureComponent } from './upload-picture/upload-picture.component';
+import { PostService } from '../services/post.service';
+import { AuthGuard } from '../services/auth.guard';
 import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
 
 export const MaterialModules = [
@@ -78,15 +84,16 @@ export const MaterialModules = [
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, // imports firebase/storage only needed for storage features
     BrowserAnimationsModule,
-
+    HttpModule,
     MaterialModules,
     FormsModule,
     AppRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AngularFireDatabaseModule
   ],
   declarations: [ AppComponent, HomeComponent, SigninComponent, PostComponent, CreateRestaurantComponent ],
-  providers: [AuthService],
-  entryComponents:[CreateRestaurantComponent],
+  providers: [AuthService, PostService, AngularFireDatabase, AuthGuard],
+  entryComponents:[UploadPictureComponent, CreateRestaurantComponent],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}

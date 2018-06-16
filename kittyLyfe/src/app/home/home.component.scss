@@ -1,0 +1,61 @@
+// $horz-padding: 20px;
+
+// a[mat-fab] {
+//   position: fixed;
+//   right: 20px;
+//   bottom: 20px;
+// }
+
+// .hidden-content {
+//   height: 105px;
+//   overflow: hidden;
+//   transition: all 300ms ease-in-out;
+//   -webkit-transition: all 300ms ease-in-out;
+// }
+
+// .hidden-content.hidden {
+//   height: 0;
+// }
+
+// // mat-card {
+// //   mat-card-title {
+// //     padding: 10px $horz-padding;
+// //     font-weight: normal;
+// //     font-size: 24px;
+// //   }
+// //   mat-card-content {
+// //     margin: 0;
+// //     padding: 10px $horz-padding;
+// //     font-size: 16px;
+// //   }
+// //   mat-card-actions {
+// //     padding: 10px $horz-padding;
+// //     .edit-btn {
+// //       background-color: rgba(8, 152, 137, 0.1);
+// //     }
+// //     .delete-btn {
+// //       background-color: rgba(255, 0, 0, 0.15);
+// //     }
+// //   }
+// // }
+
+// mat-card {
+//   margin: 10px 0;
+// }
+
+.author-name {
+    font-weight: bold;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .posts {
+    margin-bottom: 10px;
+    padding: 0 0 0 24px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
