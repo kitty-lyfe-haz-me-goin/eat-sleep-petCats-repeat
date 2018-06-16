@@ -72,8 +72,8 @@ export class HomeComponent implements OnInit {
         this.postService.addPost(p);
         this.post = '';
         this.address = '';
-      });
-    }
+      }
+    });
   }
 
 }
