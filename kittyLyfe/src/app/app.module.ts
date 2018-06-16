@@ -34,11 +34,13 @@ import {
   MatSnackBarModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule
+  MatTooltipModule,
+
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
+import { PostComponent } from './post/post.component';
 
 export const MaterialModules = [
   MatAutocompleteModule,
