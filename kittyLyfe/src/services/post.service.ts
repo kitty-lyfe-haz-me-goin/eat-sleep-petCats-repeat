@@ -133,4 +133,9 @@ export class PostService {
     firebase.database().ref().child(this.postsPath).child(postKey).child('photo').remove();
   }
 
+  addRestaurant(info: Object){
+    console.log("Working!");
+    console.log(info);
+  }
+
 }

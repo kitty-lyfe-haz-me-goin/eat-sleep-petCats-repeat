@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar, MatDialogRef } from '@angular/material'
 
 @Component({
   selector: 'app-create-restaurant',
@@ -11,7 +12,7 @@ export class CreateRestaurantComponent implements OnInit {
   address: String;
   phone: String;
 
-  constructor() { 
+  constructor(private dialogRef: MatDialogRef<CreateRestaurantComponent>) { 
     
   }
 
@@ -19,10 +20,26 @@ export class CreateRestaurantComponent implements OnInit {
   }
 
   close(){
-    console.log("close");
+    this.dialogRef.close();
   }
   submit(){
-    console.log("submit");
+    try{
+      let restaurant = {
+        name: this.name,
+        email: this.email,
+        address: this.address,
+        phone: this.phone 
+      }
+
+      this.name = "";
+      this.email = "";
+      this.address = "";
+      this.phone = "";
+      this.dialogRef.close(restaurant);
+    } catch (error) {
+      console.error('submit failed');
+    }
+    
   }
 
 }
