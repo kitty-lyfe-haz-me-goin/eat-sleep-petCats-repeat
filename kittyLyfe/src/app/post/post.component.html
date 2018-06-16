@@ -29,9 +29,19 @@
       </div>
 
       <mat-form-field [class.hide]="postEditingMode!=2" dividerColor="accent">
-        <input #updateInputElement matInput type="text" placeholder="Edit your post" (keyup.enter)="save()" [(ngModel)]="updatedPostBody"
+        <input #updateInputElement matInput type="text" placeholder="Edit post" (keyup.enter)="save()" [(ngModel)]="updatedPostBody"
           name="updatedPostBody">
       </mat-form-field>
+      
+      <mat-form-field [class.hide]="postEditingMode!=2" dividerColor="accent">
+        <input #updateInputElement matInput type="text" placeholder="Edit Address" (keyup.enter)="save()" [(ngModel)]="updatedAddress"
+      name="updatedAddress">
+     </mat-form-field>
+
+     <mat-form-field [class.hide]="postEditingMode!=2" dividerColor="accent">
+      <input #updateInputElement matInput type="text" placeholder="Edit Phone" (keyup.enter)="save()" [(ngModel)]="updatedPhone"
+      name="updatedPhone">
+    </mat-form-field>
     </div>
 
     <div *ngIf="postEditingMode==1" fxLayout>
