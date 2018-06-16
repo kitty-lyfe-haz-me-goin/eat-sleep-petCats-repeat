@@ -82,6 +82,8 @@ export class PostComponent implements OnInit {
       restoredPost.author = this.post.author
       restoredPost.comments = this.post.comments ? this.post.comments : [];
       restoredPost.time = this.post.time;
+      restoredPost.address = this.post.address;
+      restoredPost.phone = this.post.phone;
       this.postService.update(this.post.$key, restoredPost);
 
       this.snackBar.open('Post restored', '', {
@@ -97,6 +99,8 @@ export class PostComponent implements OnInit {
     updatedPost.userId = this.post.userId;
     updatedPost.comments = this.post.comments ? this.post.comments : [];
     updatedPost.time = this.post.time;
+    updatedPost.address = this.post.address;
+    updatedPost.phone = this.post.phone;
     this.postService.update(this.post.$key, updatedPost);
     this.postEditingMode = EditMode.displayEditButtons;
   }

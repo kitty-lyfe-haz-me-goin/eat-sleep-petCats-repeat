@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
 
     let diaLogRef = this.dialog.open(UploadPictureComponent);
     diaLogRef.afterClosed().subscribe((result: Post) => {
+      console.log("this is the results");
       console.log(result)
       this.photo = result['image'];
       this.post = result['image'].caption;
@@ -61,6 +62,7 @@ export class HomeComponent implements OnInit {
         author: this.authService._currentUsersDisplayName,
         post: this.post,
         address: this.address,
+        phone: this.phone,
         time: (new Date()).getTime().toString(),
         userId: this.authService._currentUsersUid,
         likes: [],

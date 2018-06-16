@@ -19,8 +19,8 @@ export class UploadPictureComponent implements OnInit {
 
   url: string;
   caption: string;
-  desc: String;
-  address:String;
+  desc: string;
+  address:string;
   phone:String;
 
   photoListStream: AngularFireList<Photo[]>;

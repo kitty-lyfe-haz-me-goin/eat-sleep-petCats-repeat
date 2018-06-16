@@ -102,6 +102,8 @@ export class PostService {
       author: this.authService.currentUsersDisplayName,
       userId: this.authService._currentUsersUid,
       time: (new Date()).getTime().toString(),
+      phone: post.phone,
+      address: post.address
     });
 
     firebase.database().ref(`${this.postsPath}/${post.$key}/comments`).push(comm);
@@ -141,7 +143,7 @@ export class PostService {
     console.log("Working!");
     console.log(info);
     firebase.database().ref().child(this.resturantPath).push(info);
-    
+
   }
 
 }
