@@ -59,3 +59,9 @@
   mat-form-field {
     width: 100%;
   }
+
+  a[mat-fab] {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}

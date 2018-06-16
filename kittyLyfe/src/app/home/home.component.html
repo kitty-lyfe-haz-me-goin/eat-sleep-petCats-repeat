@@ -1,21 +1,16 @@
  <div>
-  <form #addPost="ngForm">
-    <mat-card fxLayout="column" fxLayoutAlign="none stretch">
+  <!-- <form #addPost="ngForm">
       
       <div fxLayout="row" fxLayoutAlign="end center">
-        <!-- <button (click)="onSubmit()" type="submit" [disabled]="!post" mat-raised-button color="primary">
-          Post
-        </button> -->
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button (click)="showPhotoDialog()" mat-raised-button color="primary">Create a Post</button>
       </div>
 
-    </mat-card> 
-  </form>
+  </form> -->
 
   <br>
  <div> 
-    <div fxLayout="column" fxLayoutAlign="none stretch">
+    <div fxLayout="column" fxLayoutAlign="center center">
       <mat-card class="posts" *ngFor="let post of postService.allStream | async | reverse">
         <app-post [post]=post>
         </app-post>
@@ -28,3 +23,5 @@
 
   </div>
 </div>
+<a (click)="showPhotoDialog()" mat-fab><mat-icon>add</mat-icon></a>
+
