@@ -91,7 +91,7 @@ export const MaterialModules = [
     FlexLayoutModule,
     AngularFireDatabaseModule
   ],
-  declarations: [ AppComponent, HomeComponent, SigninComponent, PostComponent, CreateRestaurantComponent ],
+  declarations: [ AppComponent, UploadPictureComponent, HomeComponent, SigninComponent, PostComponent, CreateRestaurantComponent ],
   providers: [AuthService, PostService, AngularFireDatabase, AuthGuard],
   entryComponents:[UploadPictureComponent, CreateRestaurantComponent],
   bootstrap: [ AppComponent ]
