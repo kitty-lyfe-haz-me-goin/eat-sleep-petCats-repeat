@@ -94,6 +94,7 @@ export class PostComponent implements OnInit {
     const updatedPost = new Post();
     updatedPost.post = this.updatedPostBody;
     updatedPost.author = this.post.author;
+    updatedPost.photo = this.post.photo;
     updatedPost.userId = this.post.userId;
     updatedPost.comments = this.post.comments ? this.post.comments : [];
     updatedPost.time = this.post.time;

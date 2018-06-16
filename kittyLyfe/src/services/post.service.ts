@@ -65,7 +65,10 @@ export class PostService {
     //       this.hideLoadMoreBtn = numPostsRequested > posts.length;
     //       return posts;
     //     });
-    this.allStream = this.db.list(this.postsPath).valueChanges();
+    this.allStream = this.db.list(this.postsPath).snapshotChanges()
+      .map(gamesList => { 
+        return gamesList.map(a => ({ $key: a.key, ...a.payload.val() }))
+      })
 
   }
 
@@ -102,7 +105,7 @@ export class PostService {
       userId: this.authService._currentUsersUid,
       time: (new Date()).getTime().toString(),
     });
-
+    console.log(post);
     firebase.database().ref(`${this.postsPath}/${post.$key}/comments`).push(comm);
   }
 
@@ -118,7 +121,6 @@ export class PostService {
   }
 
   addPost(post: Post) {
-   
     firebase.database().ref().child(this.postsPath).push(post);
     console.log('added to firebase.');
   }
@@ -128,8 +130,8 @@ export class PostService {
   }
 
   update(key: string, post: Post) {
-    // firebase.database().ref().child(this.postsPath).child(key).set(post);
-    // this.db.object(`/${this.postsPath}/${key}`).update(post);
+    firebase.database().ref().child(this.postsPath).child(key).set(post);
+    this.db.object(`/${this.postsPath}/${key}`).update(post);
   }
 
   removePicture(postKey: string) {
