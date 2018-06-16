@@ -1,4 +1,4 @@
-<!-- <div class="post" fxLayout="column" fxLayoutAlign="none stretch">
+<div class="post" fxLayout="column" fxLayoutAlign="none stretch">
 
   <div class="topPart" fxLayout>
     <div fxFlex>
@@ -7,7 +7,7 @@
         <div *ngIf="postEditingMode != 2" class="post-body" fxFlex>{{post.post}}</div>
 
         <div class="imgDiv" *ngIf="post.photo" fxLayoutAlign="center none">
-          <img (click)="photoClicked(post)" routerLinkActive="active" md-card-image [src]="post.photo.url" alt="Image from firebase">
+          <img (click)="photoClicked(post)" routerLinkActive="active" mat-card-image [src]="post.photo.url" alt="Image from firebase">
         </div>
       </div>
 
@@ -15,37 +15,47 @@
 
       <div fxLayout>
 
-        <button class="likeBtn" md-button color="primary" (click)="reply()">
+        <ng-template #alreadyLikedTemplate>
+          <button class="unlikeBtn" mat-button color="accent" (click)="unlike()">     
+            Unlike
+          </button>
+        </ng-template>
+
+        <button class="likeBtn" mat-button color="primary" (click)="reply()">
           Reply
         </button>
       </div>
 
-      <md-input-container [class.hide]="postEditingMode!=2" dividerColor="accent">
-        <input #updateInputElement mdInput type="text" placeholder="Edit your post" (keyup.enter)="save()" [(ngModel)]="updatedPostBody"
+      <mat-form-field [class.hide]="postEditingMode!=2" dividerColor="accent">
+        <input #updateInputElement matInput type="text" placeholder="Edit your post" (keyup.enter)="save()" [(ngModel)]="updatedPostBody"
           name="updatedPostBody">
-      </md-input-container>
+      </mat-form-field>
     </div>
 
     <div *ngIf="postEditingMode==1" fxLayout>
-      <button md-icon-button (click)="enableEditing(updateInputElement)">
-        <md-icon>edit</md-icon>
+      <button mat-icon-button (click)="enableEditing(updateInputElement)">
+        <mat-icon>edit</mat-icon>
       </button>
-      <button md-icon-button (click)="remove()">
-        <md-icon>delete</md-icon>
+      <button mat-icon-button (click)="remove()">
+        <mat-icon>delete</mat-icon>
       </button>
     </div>
 
     <div *ngIf="postEditingMode==2" fxLayout>
-      <button [disabled]="updatedPostBody==post.post" md-icon-button (click)="save()">
-        <md-icon>save</md-icon>
+      <button [disabled]="updatedPostBody==post.post" mat-icon-button (click)="save()">
+        <mat-icon>save</mat-icon>
       </button>
-      <button md-icon-button (click)="cancel()">
-        <md-icon>cancel</md-icon>
+      <button mat-icon-button (click)="cancel()">
+        <mat-icon>cancel</mat-icon>
       </button>
     </div>
   </div>
 
   <div class="options">
+    <div class="likes">
+      <span class="numLikes" *ngIf="numLikes!=0">{{numLikes}}</span>
+    </div>
+    <hr>
     <div class="all-comments">
       <div *ngFor="let obj of allComments" fxLayout>
         <div class="commentBox" fxLayout="column">
@@ -54,18 +64,21 @@
         </div>
         <span fxFlex></span>
         <div *ngIf="obj.editable" class="commentOptions" fxLayout>
-          <button md-icon-button (click)="deleteComment(obj.key)">
-              <md-icon>delete</md-icon>
+          <!-- <button mat-icon-button (click)="editComment(obj)">
+              <mat-icon>edit</mat-icon>
+            </button> -->
+          <button mat-icon-button (click)="deleteComment(obj.key)">
+              <mat-icon>delete</mat-icon>
             </button>
         </div>
       </div>
     </div>
     <div class="comments" fxLayout>
-      <md-icon>comment</md-icon>
-      <!-- <md-input-container fxFlex class="writeComment" md-no-float> -
-      <input (keyup.enter)="comment()" mdInput type="text" class="writeComment" placeholder="Add a comment" [(ngModel)]="nowComment"
+      <mat-icon>comment</mat-icon>
+      <!-- <mat-input-container fxFlex class="writeComment" mat-no-float> -->
+      <input (keyup.enter)="comment()" matInput type="text" class="writeComment" placeholder="Add a comment" [(ngModel)]="nowComment"
         name="nowComment">
-      <!-- </md-input-container> 
+      <!-- </mat-input-container> -->
     </div>
   </div>
-</div> -->
+</div>

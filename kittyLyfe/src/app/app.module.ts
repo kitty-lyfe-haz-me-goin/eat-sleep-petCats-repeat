@@ -83,7 +83,7 @@ export const MaterialModules = [
     AppRoutingModule,
     FlexLayoutModule
   ],
-  declarations: [ AppComponent, HomeComponent, SigninComponent ],
+  declarations: [ AppComponent, HomeComponent, SigninComponent, PostComponent ],
   providers: [AuthService],
   bootstrap: [ AppComponent ]
 })
