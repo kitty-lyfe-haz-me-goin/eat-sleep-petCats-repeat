@@ -13,6 +13,8 @@ export class Comment extends FirebaseFlatSnapshot {
     author: String;
     userId: String;
     time: String;
+    
+    
 
     constructor(obj?: any) {
         super(obj);
@@ -45,6 +47,8 @@ export class Post extends FirebaseFlatSnapshot {
     public time: String;
     public comments: Comment[];
     public photo: Photo;
+    public address: String;
+    public phone: string;
 
     constructor(obj?: any) {
         super(obj);
@@ -54,5 +58,7 @@ export class Post extends FirebaseFlatSnapshot {
         this.comments = obj && obj.comments || '';
         this.time = obj && obj.time || '';
         this.photo = obj && obj.photo || '';
+        this.address  = obj && obj.address || '';
+        this.phone  = obj && obj.phone || '';
     }
 }

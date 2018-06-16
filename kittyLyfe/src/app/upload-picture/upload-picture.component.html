@@ -2,6 +2,9 @@
     <h1 mat-dialog-title fxLayoutAlign="center center">Add a new photo</h1>
     <form #photoForm="ngForm" (ngSubmit)="onSubmit()" fxLayout="column">
       <mat-dialog-content fxLayout="column">
+        <mat-form-field fxFlex dividerColor="warn">
+            <input matInput type="text" placeholder="Description" [(ngModel)]="desc" name="desc">
+        </mat-form-field>
         <mat-form-field fxFlex>
           <input matInput name="url" [(ngModel)]="url" required placeholder="Add an existing URL">
         </mat-form-field>
@@ -20,11 +23,17 @@
         <mat-form-field fxFlex>
           <input matInput name="caption" [(ngModel)]="caption" placeholder="Caption">
         </mat-form-field>
+        <mat-form-field fxFlex dividerColor="warn">
+            <input matInput type="text" placeholder="Address" [(ngModel)]="address" name="address">
+        </mat-form-field>
+        <mat-form-field fxFlex dividerColor="warn">
+            <input matInput type="phone" placeholder="Phone" [(ngModel)]="phone" name="phone">
+        </mat-form-field>
       </mat-dialog-content>
   
       <mat-dialog-actions fxLayoutAlign="end center">
         <button mat-button type="button" mat-dialog-close>Cancel</button>
-        <button mat-button [disabled]="!photoForm.form.valid" type="submit">Save</button>
+        <button mat-button [disabled]="!photoForm.form.valid" type="submit">Submit</button>
       </mat-dialog-actions>
     </form>
   </div>

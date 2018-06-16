@@ -15,6 +15,7 @@ import { Query } from '@firebase/database';
 export class PostService {
 
   readonly postsPath = 'posts';
+  readonly resturantPath = 'resturants';
 
   public hideLoadMoreBtn = false;
   readonly postBatchSize = 20;
@@ -104,6 +105,8 @@ export class PostService {
       author: this.authService.currentUsersDisplayName,
       userId: this.authService._currentUsersUid,
       time: (new Date()).getTime().toString(),
+      phone: post.phone,
+      address: post.address
     });
     console.log(post);
     firebase.database().ref(`${this.postsPath}/${post.$key}/comments`).push(comm);
@@ -136,6 +139,13 @@ export class PostService {
 
   removePicture(postKey: string) {
     firebase.database().ref().child(this.postsPath).child(postKey).child('photo').remove();
+  }
+
+  addRestaurant(info: Object){
+    console.log("Working!");
+    console.log(info);
+    firebase.database().ref().child(this.resturantPath).push(info);
+
   }
 
 }

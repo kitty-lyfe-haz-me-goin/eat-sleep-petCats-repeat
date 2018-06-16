@@ -24,6 +24,8 @@ export class PostComponent implements OnInit {
   // public commentEditingMode = EditMode.notEditable;
 
   updatedPostBody: String;
+  updatedAddress: String;
+  updatedPhone: string;
 
   alreadyLiked: boolean;
 
@@ -55,6 +57,8 @@ export class PostComponent implements OnInit {
   enableEditing(inputEl: HTMLInputElement) {
     this.postEditingMode = EditMode.editing;
     this.updatedPostBody = this.post.post;
+    this.updatedAddress = this.post.address;
+    this.updatedPhone = this.post.phone;
     setTimeout(() => {
       inputEl.focus();
     }, 0);
@@ -82,6 +86,8 @@ export class PostComponent implements OnInit {
       restoredPost.author = this.post.author
       restoredPost.comments = this.post.comments ? this.post.comments : [];
       restoredPost.time = this.post.time;
+      restoredPost.address = this.post.address;
+      restoredPost.phone = this.post.phone;
       this.postService.update(this.post.$key, restoredPost);
 
       this.snackBar.open('Post restored', '', {
@@ -91,6 +97,7 @@ export class PostComponent implements OnInit {
   }
 
   save() {
+    console.log("updating the post");
     const updatedPost = new Post();
     updatedPost.post = this.updatedPostBody;
     updatedPost.author = this.post.author;
@@ -98,8 +105,13 @@ export class PostComponent implements OnInit {
     updatedPost.userId = this.post.userId;
     updatedPost.comments = this.post.comments ? this.post.comments : [];
     updatedPost.time = this.post.time;
+    updatedPost.address = this.updatedAddress;
+    updatedPost.phone = this.updatedPhone;
     this.postService.update(this.post.$key, updatedPost);
+    this.post = updatedPost;
+    console.log(updatedPost);
     this.postEditingMode = EditMode.displayEditButtons;
+
   }
 
   cancel() {
