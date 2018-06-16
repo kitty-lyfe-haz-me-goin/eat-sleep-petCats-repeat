@@ -30,6 +30,7 @@ export class AuthService {
 
     this.isSignedInStream = this.afAuth.authState
       .map<firebase.User, boolean>((user: firebase.User) => {
+        console.log(user);
         return user != null;
       });
 

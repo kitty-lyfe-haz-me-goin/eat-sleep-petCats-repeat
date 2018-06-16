@@ -48,6 +48,7 @@ import { UploadPictureComponent } from './upload-picture/upload-picture.componen
 import { PostService } from '../services/post.service';
 import { AuthGuard } from '../services/auth.guard';
 import { CreateRestaurantComponent } from './create-restaurant/create-restaurant.component';
+import { ReversePipe } from './pipes/reverse.pipe';
 
 export const MaterialModules = [
   MatAutocompleteModule,
@@ -91,7 +92,14 @@ export const MaterialModules = [
     FlexLayoutModule,
     AngularFireDatabaseModule
   ],
-  declarations: [ AppComponent, UploadPictureComponent, HomeComponent, SigninComponent, PostComponent, CreateRestaurantComponent ],
+  declarations: [ 
+    AppComponent, 
+    UploadPictureComponent,
+    HomeComponent, 
+    SigninComponent, 
+    PostComponent, 
+    CreateRestaurantComponent,
+    ReversePipe ],
   providers: [AuthService, PostService, AngularFireDatabase, AuthGuard],
   entryComponents:[UploadPictureComponent, CreateRestaurantComponent],
   bootstrap: [ AppComponent ]
