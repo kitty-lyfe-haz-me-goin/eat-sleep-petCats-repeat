@@ -15,6 +15,7 @@ import { Query } from '@firebase/database';
 export class PostService {
 
   readonly postsPath = 'posts';
+  readonly resturantPath = 'resturants';
 
   public hideLoadMoreBtn = false;
   readonly postBatchSize = 20;
@@ -139,6 +140,8 @@ export class PostService {
   addRestaurant(info: Object){
     console.log("Working!");
     console.log(info);
+    firebase.database().ref().child(this.resturantPath).push(info);
+    
   }
 
 }

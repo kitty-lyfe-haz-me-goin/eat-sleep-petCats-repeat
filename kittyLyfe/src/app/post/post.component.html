@@ -5,6 +5,8 @@
       <div fxLayout="column">
         <div class="author-name" fxFlex>{{post.author}}</div>
         <div *ngIf="postEditingMode != 2" class="post-body" fxFlex>{{post.post}}</div>
+        <div *ngIf="postEditingMode != 2" class="post-body" fxFlex>Address: {{post.address}}</div>
+        <div *ngIf="postEditingMode != 2" class="post-body" fxFlex>Phone: {{post.phone}}</div>
 
         <div class="imgDiv" *ngIf="post.photo" fxLayoutAlign="center none">
           <img (click)="photoClicked(post)" routerLinkActive="active" mat-card-image [src]="post.photo.url" alt="Image from firebase">

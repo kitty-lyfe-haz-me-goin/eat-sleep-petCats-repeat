@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit {
 
   photo: Photo;
 
+  address: String;
+
+  phone: String;
   isExpanded = false;
 
   constructor(private authService: AuthService,
@@ -47,9 +50,26 @@ export class HomeComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
 
     let diaLogRef = this.dialog.open(UploadPictureComponent);
-    diaLogRef.afterClosed().subscribe((result: Photo) => {
-      this.photo = result;
-      this.post = result.caption;
+    diaLogRef.afterClosed().subscribe((result: Post) => {
+      console.log(result)
+      this.photo = result['image'];
+      this.post = result['image'].caption;
+      this.address = result['address'];
+      this.phone = result['phone'];
+      
+      let p = new Post({
+        author: this.authService._currentUsersDisplayName,
+        post: this.post,
+        address: this.address,
+        time: (new Date()).getTime().toString(),
+        userId: this.authService._currentUsersUid,
+        likes: [],
+        comments: [],
+        photo: this.photo,
+      });
+      this.postService.addPost(p);
+      this.post = '';
+      this.address = '';
     });
   }
 

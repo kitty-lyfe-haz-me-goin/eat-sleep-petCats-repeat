@@ -19,6 +19,9 @@ export class UploadPictureComponent implements OnInit {
 
   url: string;
   caption: string;
+  desc: String;
+  address:String;
+  phone:String;
 
   photoListStream: AngularFireList<Photo[]>;
 
@@ -36,8 +39,15 @@ export class UploadPictureComponent implements OnInit {
       const photo = new Photo({
         url: this.url,
         caption: this.caption,
-        uid: this.authService._currentUsersUid,
       });
+
+      const post = {
+        uid: this.authService._currentUsersUid,
+        image: photo,
+        address: this.address,
+        phone: this.phone,
+        desc: this.desc
+      }
 
       // this.postService.addPhoto(photo);
       // const sbRef = this.snackBar.open('Photo added', '', {
@@ -47,7 +57,12 @@ export class UploadPictureComponent implements OnInit {
       // this.photoListStream.update(nextKey, photo);
       this.url = '';
       this.caption = '';
-      this.dialogRef.close(photo);
+      this.desc = '';
+      this.address = '';
+      this.phone = '';
+      console.log("this is the post");
+      console.log(post);
+      this.dialogRef.close(post);
     } catch (error) {
       console.error('submit failed');
     }

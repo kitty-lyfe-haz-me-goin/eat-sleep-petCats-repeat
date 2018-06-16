@@ -1,15 +1,13 @@
  <div>
   <form #addPost="ngForm">
     <mat-card fxLayout="column" fxLayoutAlign="none stretch">
-      <mat-form-field fxFlex dividerColor="warn">
-        <input matInput type="text" placeholder="Add a post" [(ngModel)]="post" name="post">
-      </mat-form-field>
+      
       <div fxLayout="row" fxLayoutAlign="end center">
-        <button (click)="onSubmit()" type="submit" [disabled]="!post" mat-raised-button color="primary">
+        <!-- <button (click)="onSubmit()" type="submit" [disabled]="!post" mat-raised-button color="primary">
           Post
-        </button>
+        </button> -->
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button (click)="showPhotoDialog()" mat-raised-button color="primary">Upload a Photo</button>
+        <button (click)="showPhotoDialog()" mat-raised-button color="primary">Create a Post</button>
       </div>
 
     </mat-card> 
