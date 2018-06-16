@@ -2,14 +2,14 @@
   <form #addPost="ngForm">
     <mat-card fxLayout="column" fxLayoutAlign="none stretch">
       <mat-form-field fxFlex dividerColor="warn">
-        <input mdInput type="text" placeholder="Add a post" [(ngModel)]="post" name="post">
+        <input matInput type="text" placeholder="Add a post" [(ngModel)]="post" name="post">
       </mat-form-field>
       <div fxLayout="row" fxLayoutAlign="end center">
-        <button (click)="onSubmit()" type="submit" [disabled]="!post" md-raised-button color="primary">
+        <button (click)="onSubmit()" type="submit" [disabled]="!post" mat-raised-button color="primary">
           Post
         </button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button (click)="showPhotoDialog()" md-raised-button color="primary">Upload a Photo</button>
+        <button (click)="showPhotoDialog()" mat-raised-button color="primary">Upload a Photo</button>
       </div>
 
     </mat-card> 
@@ -18,14 +18,14 @@
   <br>
  <div> 
     <div fxLayout="column" fxLayoutAlign="none stretch">
-      <!-- <mat-card class="posts" *ngFor="let post of postService.allStream | async | reverse">
+      <mat-card class="posts" *ngFor="let post of postService.allStream | async">
         <app-post [post]=post>
         </app-post>
       </mat-card>
       <div *ngIf="!postService.hideLoadMoreBtn" fxLayout="row" fxLayoutAlign="end center">
-        <button md-raised-button color="accent" (click)="postService.displayMorePosts()">
+        <button mat-raised-button color="accent" (click)="postService.displayMorePosts()">
           Load more posts</button>
-      </div> -->
+      </div>
     </div>
 
   </div>

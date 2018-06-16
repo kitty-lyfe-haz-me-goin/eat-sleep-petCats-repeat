@@ -120,6 +120,14 @@ export class AuthService {
     });
   }
 
+  signInWithGoogle() {
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then((result: any) => {
+        this.router.navigate(['/']);
+        const user: firebase.User = result.user;
+      });
+  }
+
   signOut() {
     this.afAuth.auth.signOut();
     console.log(`USER IS SIGNED OUT!!!!`);
