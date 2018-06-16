@@ -32,10 +32,12 @@ import {
   MatSnackBarModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule
+  MatTooltipModule,
+
 } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { PostComponent } from './post/post.component';
 
 export const MaterialModules = [
   MatAutocompleteModule,
@@ -76,7 +78,7 @@ export const MaterialModules = [
     FormsModule,
     AppRoutingModule,
   ],
-  declarations: [ AppComponent, HomeComponent ],
+  declarations: [ AppComponent, HomeComponent, PostComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {}
