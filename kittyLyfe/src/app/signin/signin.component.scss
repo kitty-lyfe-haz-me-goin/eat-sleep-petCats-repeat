@@ -1,0 +1,49 @@
+mat-card {
+  padding: 30x 20px;
+  margin: 20px 40px;
+  #google-button {
+    background-color: transparent;
+    background-image: url('/assets/images/google_signin_dark.png');
+    width: 191px;
+    height: 46px;
+    margin-bottom: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &:active {
+      background-image: url('/assets/images/google_signin_dark_pressed.png');
+    }
+  }
+}
+
+span {
+  margin-top: 15px;
+}
+
+#createAcc {
+  background-color: #3f51b5;
+  color: white;
+  width: 191px;
+  height: 46px;
+}
+
+img {
+  display: block;
+  max-height: 500px;
+  width: auto;
+  text-align: center;
+  height: auto;
+  max-width: 100%;
+}
+
+mat-card-content {
+  width: 100%;
+}
+
+mat-input-container {
+  width: 100%;
+}
+
+mat-card-title {
+  padding: 0 30px
+}
+
