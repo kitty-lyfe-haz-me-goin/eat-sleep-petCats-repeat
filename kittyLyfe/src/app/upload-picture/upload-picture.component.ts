@@ -42,8 +42,8 @@ export class UploadPictureComponent implements OnInit {
       });
 
       const post = {
-        uid: this.authService._currentUsersUid,
-        image: photo,
+        userId: this.authService._currentUsersUid,
+        photo: photo,
         address: this.address,
         phone: this.phone,
         desc: this.desc

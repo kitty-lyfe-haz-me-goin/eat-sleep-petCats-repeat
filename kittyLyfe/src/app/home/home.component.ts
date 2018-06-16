@@ -53,10 +53,10 @@ export class HomeComponent implements OnInit {
     diaLogRef.afterClosed().subscribe((result: Post) => {
       console.log("this is the results");
       console.log(result)
-      this.photo = result['image'];
-      this.post = result['image'].caption;
-      this.address = result['address'];
-      this.phone = result['phone'];
+      this.photo = result.photo;
+      this.post = result.photo.caption;
+      this.address = result.address;
+      this.phone = result.phone;
       
       let p = new Post({
         author: this.authService._currentUsersDisplayName,
@@ -65,7 +65,6 @@ export class HomeComponent implements OnInit {
         phone: this.phone,
         time: (new Date()).getTime().toString(),
         userId: this.authService._currentUsersUid,
-        likes: [],
         comments: [],
         photo: this.photo,
       });
