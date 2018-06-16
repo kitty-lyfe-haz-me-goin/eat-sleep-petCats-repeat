@@ -70,9 +70,9 @@ export class PostService {
 
   }
 
-  displayMorePosts() {
-    this.postIncrementStream.next(this.postBatchSize);
-  }
+  // displayMorePosts() {
+  //   this.postIncrementStream.next(this.postBatchSize);
+  // }
 
   // addLike(post: Post) {
   //   let likes = new Like({

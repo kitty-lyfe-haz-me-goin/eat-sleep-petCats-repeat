@@ -16,13 +16,13 @@
   <br>
  <div> 
     <div fxLayout="column" fxLayoutAlign="none stretch">
-      <mat-card class="posts" *ngFor="let post of postService.allStream | async">
+      <mat-card class="posts" *ngFor="let post of postService.allStream | async | reverse">
         <app-post [post]=post>
         </app-post>
       </mat-card>
       <div *ngIf="!postService.hideLoadMoreBtn" fxLayout="row" fxLayoutAlign="end center">
-        <button mat-raised-button color="accent" (click)="postService.displayMorePosts()">
-          Load more posts</button>
+        <!-- <button mat-raised-button color="accent" (click)="postService.displayMorePosts()">
+          Load more posts</button> -->
       </div>
     </div>
 

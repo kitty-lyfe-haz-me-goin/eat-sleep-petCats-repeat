@@ -78,10 +78,10 @@ export class UploadPictureComponent implements OnInit {
 
   photoSelected(event: any) {
     const file: File = event.target.files[0];
-    const metaData = { 'contentType': file.type };
     // const nextKey = this.photoListStream.push({}).key;
-    const storageRef = this.storage.ref(`/photos/${this.randomString()}`);
-    const uploadTask = storageRef.put(file, metaData);
+    let path = `/photos/${this.randomString()}`;
+    const storageRef = this.storage.ref(path);
+    const uploadTask = this.storage.upload(path, file);
     console.log(`Uploading: ${file.name}`);
     document.getElementById('spinner').style.display = 'flex';
     document.getElementById('upload').style.display = 'none';
@@ -95,6 +95,7 @@ export class UploadPictureComponent implements OnInit {
         document.getElementsByName('url')[0].focus();
         storageRef.getDownloadURL().toPromise().then(ref => {
           this.url = ref;
+          console.log(this.url);
         });
       })
    )
