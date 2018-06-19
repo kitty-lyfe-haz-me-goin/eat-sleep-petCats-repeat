@@ -9,8 +9,8 @@
       </span>
     </mat-card-title>
     <button mat-button id="google-button" (click)="authService.signInWithGoogle()"></button>
-    <button mat-raised-button color="primary" id="createAcc" (click)="displayAcountCreation()">Create Account (For restaurants)</button>
     <button mat-raised-button color="primary" id="createAcc" (click)="authService.signInAnonymously()">Login Anonymously</button>
+    <button mat-raised-button color="primary" id="createAcc" (click)="displayAcountCreation()">Create Account</button>
   </mat-card>
 
   <ng-template #signedInTemplate>
