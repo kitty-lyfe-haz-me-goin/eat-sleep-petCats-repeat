@@ -20,7 +20,11 @@ export class AuthService {
       if (user) {
         console.log("user is singed in as ", user);
         this._currentUsersUid = user.uid;
-        this._currentUsersDisplayName = user.displayName || user.email || user.uid;
+        if(user.isAnonymous) {
+          this._currentUsersDisplayName = "Anonymous User";
+        } else {
+          this._currentUsersDisplayName = user.displayName || user.email || user.uid;
+        }
       } else {
         console.log("user is not signed in.");
         this._currentUsersUid = '';
@@ -36,7 +40,13 @@ export class AuthService {
 
     this.displayNameStream = this.afAuth.authState
       .map<firebase.User, string>((user: firebase.User) => {
-        return user ? user.displayName || user.email || user.uid : '';
+        if(user) {
+          if(user.isAnonymous) {
+            return "Anonymous";
+          } else {
+            return user ? user.displayName || user.email || user.uid : '';
+          }
+        }
       });
   }
 
@@ -130,6 +140,23 @@ export class AuthService {
         this.router.navigate(['/']);
         const user: firebase.User = result.user;
       });
+  }
+
+  signInAnonymously() {
+    this.afAuth.auth.signInAnonymously()
+    .then(user => {
+      if(user) {
+        let isAnon = user.isAnonymous;
+        let uid = user.uid;
+        this.router.navigate(['/']);
+      } else {
+
+      }
+    }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorMessage);
+    });
   }
 
   signOut() {
